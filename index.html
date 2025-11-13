@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Quiz Completo - 1053 Domande</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .exam-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #34495e;
+            padding: 12px 15px;
+            border-radius: 0 0 8px 8px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .timer {
+            font-size: 1.4rem;
+            font-weight: bold;
+            background-color: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 4px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .question-counter {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .quiz-info {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .options {
+            margin-bottom: 20px;
+        }
+        
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .option.selected {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .finish-btn {
+            background-color: #e74c3c;
+        }
+        
+        .finish-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .results-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .passed {
+            color: #27ae60;
+            background-color: #d4edda;
+        }
+        
+        .failed {
+            color: #e74c3c;
+            background-color: #f8d7da;
+        }
+        
+        .results-details {
+            margin-bottom: 25px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .result-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .question-text {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .user-answer {
+            margin-bottom: 5px;
+            padding: 5px 0;
+        }
+        
+        .correct-answer {
+            font-weight: bold;
+            padding: 5px 0;
+        }
+        
+        .topic {
+            font-style: italic;
+            color: #6c757d;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .restart-btn {
+            display: block;
+            margin: 0 auto;
+            background-color: #2ecc71;
+            max-width: 250px;
+        }
+        
+        .restart-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Media query per schermi più grandi */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px;
+                padding: 20px;
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .exam-info {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+            }
+            
+            .timer-container {
+                flex-direction: row;
+            }
+            
+            .navigation {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            button {
+                width: auto;
+                padding: 10px 20px;
+            }
+            
+            .quiz-container {
+                padding: 25px;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulatore Quiz Completo Assistenti Tecnici</h1>
+            <p>1053 Domande - Tutte le Aree</p>
+        </header>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Caricamento database quiz (1053 domande)...</p>
+            <p>Attendere prego...</p>
+        </div>
+        
+        <div class="exam-info" id="exam-info" style="display: none;">
+            <div class="timer-container">
+                <span>Tempo:</span>
+                <span class="timer" id="timer">60:00</span>
+            </div>
+            <div class="question-counter">
+                Domanda <span id="current-question">1</span> di <span id="total-questions">30</span>
+            </div>
+            <div class="quiz-info">
+                30 quiz selezionati da 1053 disponibili
+            </div>
+        </div>
+        
+        <div class="quiz-container" id="quiz-container">
+            <div class="question" id="question-text"></div>
+            <div class="options" id="options-container"></div>
+            
+            <div class="navigation">
+                <button id="prev-btn" disabled>Precedente</button>
+                <button id="next-btn">Successiva</button>
+                <button id="finish-btn" class="finish-btn">Termina Esame</button>
+            </div>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <div class="results-header">
+                <h2>Risultati dell'Esame</h2>
+            </div>
+            
+            <div class="score" id="score-text"></div>
+            
+            <div class="results-details" id="results-details"></div>
+            
+            <button class="restart-btn" id="restart-btn">Nuova Simulazione</button>
+        </div>
+    </div>
+
+    <script>
+        // Variabili globali
+        let quizDatabase = [];
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let timer;
+        let timeLeft = 60 * 60; // 60 minuti in secondi
+
+        // Elementi DOM
+        const loadingElement = document.getElementById('loading');
+        const examInfoElement = document.getElementById('exam-info');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const timerElement = document.getElementById('timer');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
+        const scoreText = document.getElementById('score-text');
+        const resultsDetails = document.getElementById('results-details');
+        const restartBtn = document.getElementById('restart-btn');
+
+      // Carica il database delle domande
+async function loadQuizDatabase() {
+    try {
+        console.log("Caricamento database quiz...");
+        
+        // Carica il file JSON esterno
+        const response = await fetch('data.json');
+        if (!response.ok) {
+            throw new Error(`Errore HTTP: ${response.status}`);
+        }
+        quizDatabase = await response.json();
+                    // Area Comunicazione
+                    {
+                        id: 1,
+                        question: "Quali dei seguenti ambiti non appartiene al nuovo modello funzionale di URP elaborato con la legge n.150/00?",
+                        options: [
+                            "Ambito delle prestazioni",
+                            "Ambito organizzativo",
+                            "Ambito dell'ascolto",
+                            "Ambito del controllo"
+                        ],
+                        correctAnswer: 3,
+                        topic: "Comunicazione - URP"
+                    },
+                    {
+                        id: 2,
+                        question: "Quale provvedimento normativo costituisce la premessa per l'introduzione degli URP?",
+                        options: [
+                            "La legge n.59/97",
+                            "La legge n.142/90",
+                            "Il d.lgs. n.29/93",
+                            "La legge n.241/90"
+                        ],
+                        correctAnswer: 3,
+                        topic: "Comunicazione - URP"
+                    },
+                    // Area Disabilità
+                    {
+                        id: 3,
+                        question: "L'insegnante di sostegno può valutare tutti gli alunni della classe?",
+                        options: [
+                            "No, può valutare solo l'alunno con disabilità",
+                            "Sì, ma solo se il Consiglio di Classe è d'accordo",
+                            "Sì, ma solo nel Primo Ciclo",
+                            "Sì, in tutti gli ordini di scuola"
+                        ],
+                        correctAnswer: 3,
+                        topic: "Disabilità - Insegnante di sostegno"
+                    },
+                    {
+                        id: 4,
+                        question: "Il termine 'persona handicappata':",
+                        options: [
+                            "viene usato per indicare una situazione di emarginazione",
+                            "è un modo scorretto, oggi non più accettato",
+                            "si usa solo per indicare le persone con disabilità motoria",
+                            "è sinonimo di 'persona con disabilità'"
+                        ],
+                        correctAnswer: 1,
+                        topic: "Disabilità - Terminologia"
+                    },
+                    // Area Normativa
+                    {
+                        id: 5,
+                        question: "Gli elementi che compongono lo Stato sono:",
+                        options: [
+                            "il popolo, la legge e la forza",
+                            "la legge, il diritto e la sovranità",
+                            "la nazione, il territorio e la sovranità",
+                            "il popolo, il territorio e la sovranità"
+                        ],
+                        correctAnswer: 3,
+                        topic: "Normativa - Nozioni giuridiche"
+                    },
+                    {
+                        id: 6,
+                        question: "Le fonti del diritto sono regolate dal criterio di:",
+                        options: [
+                            "legalità",
+                            "civiltà",
+                            "gerarchia",
+                            "tassatività"
+                        ],
+                        correctAnswer: 2,
+                        topic: "Normativa - Fonti del diritto"
+                    },
+                    // Area Pubblica Amministrazione
+                    {
+                        id: 7,
+                        question: "L'organo apicale delle istituzioni scolastiche riveste qualifica di:",
+                        options: [
+                            "Dirigente generale",
+                            "Dirigente",
+                            "Funzionario di area C",
+                            "Direttore dei servizi generali e amministrativi"
+                        ],
+                        correctAnswer: 1,
+                        topic: "Pubblica Amministrazione - Organizzazione"
+                    },
+                    {
+                        id: 8,
+                        question: "Gli uffici scolastici regionali sono guidati:",
+                        options: [
+                            "dal preesistente Provveditore agli studi-dirigente",
+                            "da un dirigente non generale proveniente da istituti scolastici",
+                            "da uno dei capi dipartimento dell'amministrazione centrale",
+                            "da un dirigente generale"
+                        ],
+                        correctAnswer: 3,
+                        topic: "Pubblica Amministrazione - Organizzazione"
+                    },
+                    // Aggiungi altre domande qui per arrivare a 1053...
+                    // Per il momento uso solo 8 domande di esempio
+                ];
+
+                console.log(`Database caricato: ${quizDatabase.length} domande`);
+                
+                // Simula un caricamento più lungo per mostrare il loading
+                setTimeout(() => {
+                    loadingElement.style.display = 'none';
+                    examInfoElement.style.display = 'flex';
+                    initQuiz();
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Errore nel caricamento del database:', error);
+                loadingElement.innerHTML = '<p style="color: red;">Errore nel caricamento delle domande. Ricarica la pagina.</p>';
+            }
+        }
+
+        // Inizializza il quiz
+        function initQuiz() {
+            if (quizDatabase.length === 0) {
+                alert('Database non caricato correttamente');
+                return;
+            }
+
+            // Seleziona casualmente 30 domande dal database
+            currentQuiz = getRandomQuestions(30);
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuiz.length).fill(null);
+            
+            // Aggiorna il contatore delle domande
+            currentQuestionElement.textContent = currentQuestionIndex + 1;
+            totalQuestionsElement.textContent = currentQuiz.length;
+            
+            // Avvia il timer
+            startTimer();
+            
+            // Mostra la prima domanda
+            showQuestion();
+            
+            // Nascondi i risultati e mostra il quiz
+            resultsContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+        }
+
+        // Seleziona casualmente n domande dal database
+        function getRandomQuestions(n) {
+            const shuffled = [...quizDatabase].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
+        }
+
+        // Mostra la domanda corrente
+        function showQuestion() {
+            const question = currentQuiz[currentQuestionIndex];
+            
+            // Aggiorna il testo della domanda
+            questionText.textContent = question.question;
+            
+            // Aggiorna il contatore
+            currentQuestionElement.textContent = currentQuestionIndex + 1;
+            
+            // Pulisci le opzioni precedenti
+            optionsContainer.innerHTML = '';
+            
+            // Aggiungi le nuove opzioni
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                optionElement.addEventListener('click', selectOption);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Aggiorna lo stato dei pulsanti di navigazione
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = currentQuestionIndex === currentQuiz.length - 1;
+        }
+
+        // Gestisce la selezione di un'opzione
+        function selectOption(e) {
+            const selectedIndex = parseInt(e.target.dataset.index);
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            // Rimuovi la selezione precedente
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Aggiungi la selezione corrente
+            e.target.classList.add('selected');
+        }
+
+        // Passa alla domanda successiva
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuiz.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            }
+        }
+
+        // Torna alla domanda precedente
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        // Avvia il timer
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60 * 60; // 60 minuti
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        // Termina il quiz e mostra i risultati
+        function finishQuiz() {
+            clearInterval(timer);
+            
+            // Calcola il punteggio
+            let correctAnswers = 0;
+            currentQuiz.forEach((question, index) => {
+                if (userAnswers[index] === question.correctAnswer) {
+                    correctAnswers++;
+                }
+            });
+            
+            const score = (correctAnswers / currentQuiz.length) * 100;
+            const passed = score >= 70; // Soglia di superamento del 70%
+            
+            // Mostra il punteggio
+            scoreText.textContent = `Hai risposto correttamente a ${correctAnswers} su ${currentQuiz.length} domande (${score.toFixed(1)}%)`;
+            scoreText.className = passed ? 'score passed' : 'score failed';
+            
+            // Mostra i dettagli delle risposte
+            resultsDetails.innerHTML = '';
+            currentQuiz.forEach((question, index) => {
+                const resultItem = document.createElement('div');
+                const isCorrect = userAnswers[index] === question.correctAnswer;
+                
+                resultItem.className = isCorrect ? 'result-item correct' : 'result-item incorrect';
+                
+                let userAnswerText = 'Nessuna risposta';
+                if (userAnswers[index] !== null) {
+                    userAnswerText = question.options[userAnswers[index]];
+                }
+                
+                const correctAnswerText = question.options[question.correctAnswer];
+                
+                resultItem.innerHTML = `
+                    <div class="question-number">Domanda ${index + 1}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="user-answer">La tua risposta: ${userAnswerText}</div>
+                    ${!isCorrect ? `<div class="correct-answer">Risposta corretta: ${correctAnswerText}</div>` : ''}
+                    <div class="topic">Argomento: ${question.topic}</div>
+                `;
+                
+                resultsDetails.appendChild(resultItem);
+            });
+            
+            // Nascondi il quiz e mostra i risultati
+            quizContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextQuestion);
+        prevBtn.addEventListener('click', prevQuestion);
+        finishBtn.addEventListener('click', finishQuiz);
+        restartBtn.addEventListener('click', initQuiz);
+
+        // Inizializza il caricamento del database
+        document.addEventListener('DOMContentLoaded', loadQuizDatabase);
+    </script>
+</body>
+</html>
