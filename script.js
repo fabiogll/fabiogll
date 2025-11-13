@@ -1,10 +1,12 @@
+console.log("✅ script.js caricato correttamente!");
+
 // Variabili globali
 let quizDatabase = [];
 let currentQuiz = [];
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let timer;
-let timeLeft = 60 * 60; // 60 minuti in secondi
+let timeLeft = 60 * 60;
 
 // Elementi DOM
 let loadingElement, examInfoElement, quizContainer, resultsContainer;
@@ -13,6 +15,8 @@ let timerElement, prevBtn, nextBtn, finishBtn, scoreText, resultsDetails, restar
 
 // Inizializza gli elementi DOM
 function initializeDOMElements() {
+    console.log("🔄 Inizializzazione elementi DOM...");
+    
     loadingElement = document.getElementById('loading');
     examInfoElement = document.getElementById('exam-info');
     quizContainer = document.getElementById('quiz-container');
@@ -28,51 +32,65 @@ function initializeDOMElements() {
     scoreText = document.getElementById('score-text');
     resultsDetails = document.getElementById('results-details');
     restartBtn = document.getElementById('restart-btn');
+    
+    console.log("✅ Elementi DOM inizializzati");
 }
 
 // Carica il database delle domande
 async function loadQuizDatabase() {
     try {
-        console.log("Caricamento database quiz...");
+        console.log("📦 Caricamento database quiz...");
         
         // Inizializza gli elementi DOM
         initializeDOMElements();
         
+        console.log("🔗 Tentativo di caricare data.json...");
+        
         // Carica il file JSON esterno
         const response = await fetch('data.json');
+        console.log("📡 Response status:", response.status);
+        
         if (!response.ok) {
             throw new Error(`Errore HTTP: ${response.status}`);
         }
-        quizDatabase = await response.json();
         
-        console.log(`Database caricato: ${quizDatabase.length} domande`);
+        const data = await response.json();
+        console.log("📊 Dati caricati, numero di domande:", data.length);
+        quizDatabase = data;
         
-        // Simula un caricamento più lungo per mostrare il loading
+        console.log(`✅ Database caricato: ${quizDatabase.length} domande`);
+        
+        // Nascondi loading e mostra il quiz
         setTimeout(() => {
+            console.log("🎯 Inizializzazione quiz...");
             loadingElement.style.display = 'none';
             examInfoElement.style.display = 'flex';
             initQuiz();
-        }, 1500);
+        }, 1000);
         
     } catch (error) {
-        console.error('Errore nel caricamento del database:', error);
-        loadingElement.innerHTML = '<p style="color: red;">Errore nel caricamento delle domande. Ricarica la pagina.</p>';
+        console.error('❌ Errore nel caricamento del database:', error);
+        loadingElement.innerHTML = '<p style="color: red;">Errore: ' + error.message + '</p>';
     }
 }
 
 // Inizializza il quiz
 function initQuiz() {
+    console.log("🎮 Inizializzazione quiz...");
+    
     if (quizDatabase.length === 0) {
-        alert('Database non caricato correttamente');
+        console.error("❌ Database vuoto!");
         return;
     }
 
-    // Seleziona casualmente 30 domande dal database
-    currentQuiz = getRandomQuestions(30);
+    // Seleziona 2 domande per test (poi cambierai in 30)
+    currentQuiz = getRandomQuestions(2);
     currentQuestionIndex = 0;
     userAnswers = new Array(currentQuiz.length).fill(null);
     
-    // Aggiorna il contatore delle domande
+    console.log("📝 Quiz creato con", currentQuiz.length, "domande");
+    
+    // Aggiorna il contatore
     currentQuestionElement.textContent = currentQuestionIndex + 1;
     totalQuestionsElement.textContent = currentQuiz.length;
     
@@ -82,12 +100,14 @@ function initQuiz() {
     // Mostra la prima domanda
     showQuestion();
     
-    // Nascondi i risultati e mostra il quiz
+    // Mostra il quiz
     resultsContainer.style.display = 'none';
     quizContainer.style.display = 'block';
+    
+    console.log("✅ Quiz inizializzato con successo!");
 }
 
-// Seleziona casualmente n domande dal database
+// Seleziona casualmente n domande
 function getRandomQuestions(n) {
     const shuffled = [...quizDatabase].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
@@ -96,17 +116,10 @@ function getRandomQuestions(n) {
 // Mostra la domanda corrente
 function showQuestion() {
     const question = currentQuiz[currentQuestionIndex];
-    
-    // Aggiorna il testo della domanda
     questionText.textContent = question.question;
-    
-    // Aggiorna il contatore
     currentQuestionElement.textContent = currentQuestionIndex + 1;
     
-    // Pulisci le opzioni precedenti
     optionsContainer.innerHTML = '';
-    
-    // Aggiungi le nuove opzioni
     question.options.forEach((option, index) => {
         const optionElement = document.createElement('div');
         optionElement.className = 'option';
@@ -119,7 +132,6 @@ function showQuestion() {
         optionsContainer.appendChild(optionElement);
     });
     
-    // Aggiorna lo stato dei pulsanti di navigazione
     prevBtn.disabled = currentQuestionIndex === 0;
     nextBtn.disabled = currentQuestionIndex === currentQuiz.length - 1;
 }
@@ -129,15 +141,12 @@ function selectOption(e) {
     const selectedIndex = parseInt(e.target.dataset.index);
     userAnswers[currentQuestionIndex] = selectedIndex;
     
-    // Rimuovi la selezione precedente
     const options = document.querySelectorAll('.option');
     options.forEach(option => option.classList.remove('selected'));
-    
-    // Aggiungi la selezione corrente
     e.target.classList.add('selected');
 }
 
-// Passa alla domanda successiva
+// Navigazione
 function nextQuestion() {
     if (currentQuestionIndex < currentQuiz.length - 1) {
         currentQuestionIndex++;
@@ -145,7 +154,6 @@ function nextQuestion() {
     }
 }
 
-// Torna alla domanda precedente
 function prevQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
@@ -153,17 +161,15 @@ function prevQuestion() {
     }
 }
 
-// Avvia il timer
+// Timer
 function startTimer() {
     clearInterval(timer);
-    timeLeft = 60 * 60; // 60 minuti
+    timeLeft = 60 * 60;
     
     timer = setInterval(() => {
         timeLeft--;
-        
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
-        
         timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
         if (timeLeft <= 0) {
@@ -173,11 +179,10 @@ function startTimer() {
     }, 1000);
 }
 
-// Termina il quiz e mostra i risultati
+// Termina il quiz
 function finishQuiz() {
     clearInterval(timer);
     
-    // Calcola il punteggio
     let correctAnswers = 0;
     currentQuiz.forEach((question, index) => {
         if (userAnswers[index] === question.correctAnswer) {
@@ -186,13 +191,11 @@ function finishQuiz() {
     });
     
     const score = (correctAnswers / currentQuiz.length) * 100;
-    const passed = score >= 70; // Soglia di superamento del 70%
+    const passed = score >= 70;
     
-    // Mostra il punteggio
     scoreText.textContent = `Hai risposto correttamente a ${correctAnswers} su ${currentQuiz.length} domande (${score.toFixed(1)}%)`;
     scoreText.className = passed ? 'score passed' : 'score failed';
     
-    // Mostra i dettagli delle risposte
     resultsDetails.innerHTML = '';
     currentQuiz.forEach((question, index) => {
         const resultItem = document.createElement('div');
@@ -218,21 +221,25 @@ function finishQuiz() {
         resultsDetails.appendChild(resultItem);
     });
     
-    // Nascondi il quiz e mostra i risultati
     quizContainer.style.display = 'none';
     resultsContainer.style.display = 'block';
 }
 
-// Setup degli event listeners
+// Setup event listeners
 function setupEventListeners() {
+    console.log("🔗 Setup event listeners...");
     nextBtn.addEventListener('click', nextQuestion);
     prevBtn.addEventListener('click', prevQuestion);
     finishBtn.addEventListener('click', finishQuiz);
     restartBtn.addEventListener('click', initQuiz);
+    console.log("✅ Event listeners configurati");
 }
 
-// Inizializza l'applicazione quando la pagina è pronta
+// Inizializza quando la pagina è pronta
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("🚀 DOM caricato - inizializzazione app");
     setupEventListeners();
     loadQuizDatabase();
 });
+
+console.log("🧩 script.js completamente caricato");
