@@ -36,22 +36,29 @@ function initializeDOMElements() {
     console.log("✅ Elementi DOM inizializzati");
 }
 
-// Setup event listeners - DA CHIAMARE SOLO DOPO initQuiz
-function setupEventListeners() {
-    console.log("🔗 Setup event listeners...");
+// Setup event listeners - SOLO per i pulsanti del quiz
+function setupQuizEventListeners() {
+    console.log("🔗 Setup event listeners del quiz...");
     
     // Verifica che gli elementi esistano
-    if (!nextBtn || !prevBtn || !finishBtn || !restartBtn) {
-        console.error("❌ Elementi DOM non trovati per gli event listeners");
-        return;
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextQuestion);
+        console.log("✅ nextBtn listener aggiunto");
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevQuestion);
+        console.log("✅ prevBtn listener aggiunto");
+    }
+    if (finishBtn) {
+        finishBtn.addEventListener('click', finishQuiz);
+        console.log("✅ finishBtn listener aggiunto");
+    }
+    if (restartBtn) {
+        restartBtn.addEventListener('click', initQuiz);
+        console.log("✅ restartBtn listener aggiunto");
     }
     
-    nextBtn.addEventListener('click', nextQuestion);
-    prevBtn.addEventListener('click', prevQuestion);
-    finishBtn.addEventListener('click', finishQuiz);
-    restartBtn.addEventListener('click', initQuiz);
-    
-    console.log("✅ Event listeners configurati");
+    console.log("✅ Event listeners del quiz configurati");
 }
 
 // Carica il database delle domande
@@ -113,7 +120,7 @@ function initQuiz() {
     totalQuestionsElement.textContent = currentQuiz.length;
     
     // Setup event listeners SOLO ORA che il quiz è inizializzato
-    setupEventListeners();
+    setupQuizEventListeners();
     
     // Avvia il timer
     startTimer();
@@ -153,8 +160,8 @@ function showQuestion() {
         optionsContainer.appendChild(optionElement);
     });
     
-    prevBtn.disabled = currentQuestionIndex === 0;
-    nextBtn.disabled = currentQuestionIndex === currentQuiz.length - 1;
+    if (prevBtn) prevBtn.disabled = currentQuestionIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentQuestionIndex === currentQuiz.length - 1;
 }
 
 // Gestisce la selezione di un'opzione
