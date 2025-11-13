@@ -176,7 +176,7 @@
         "un problema pervasivo delle imprese e non dei singoli uffici addetti",
         "un obbiettivo da porsi nella programmazione strategica pluriennale",
         "il fulcro sul quale si muove il sistema di ristrutturazione della PA",
-        "un passaggio ineludibile per la ricostruzione del rapporto stato-cittadini su base di fiducia reciproca e collaborazione"
+        "un passaggio ineludible per la ricostruzione del rapporto stato-cittadini su base di fiducia reciproca e collaborazione"
       ],
       "risposta_corretta": 3,
       "argomento": "Aspetti Gestionali-Relazionali per la gestione delle risorse umane. La comunicazione Pubblica"
@@ -282,7 +282,7 @@
       "domanda": "Un'organizzazione è un tipo speciale di gruppo, con delle caratteristiche. Quale di queste NON è una caratteristica che definisce un'organizzazione?",
       "opzioni": [
         "Ha una struttura comunicativa formalizzata più o meno gerarchica",
-        "Ha un obbiettivo esplicitamente definito",
+        "Ha un obbiettivo esplicitamente definido",
         "Ha un sistema di procedure standardizzate che regolano il processo decisionale, la comunicazione esterna, ecc ecc",
         "Ha un'esigenza di tutelare gli utenti fornendo loro il miglior servizio possibile"
       ],
@@ -353,7 +353,7 @@
       "id": 30,
       "domanda": "Quale di queste accezioni NON è usata nelle scienze sociali per definire il termine Organizzazione:",
       "opzioni": [
-        "attività diretta a stabilire relazioni relativamente durevoli tra un complesso di persone e di cose",
+        "attività diretta a stabilire relazioni relativamente durevoli entre un complesso di persone e di cose",
         "entità concreta, l'insieme del sistema sociale che risulta da una tale attività",
         "la struttura delle principali relazioni formalmente previste e codificate",
         "un modello indicato ad aumentare i metodi quantitativi oltre che qualitativi"
@@ -521,7 +521,7 @@
       "id": 44,
       "domanda": "Nel passaggio da un modello organizzativo burocratico a quello telocratico, quale di questi elementi caratterizza il sistema decisionale nel modello organizzativo Teocratico:",
       "opzioni": [
-        "compartimenti stagni",
+        "compartimenti stagno",
         "scarsa Delega",
         "scarsa responsabilità",
         "delega per competenza"
@@ -600,59 +600,6 @@
       ],
       "risposta_corretta": 1,
       "argomento": "La Gestione delle risorse umane - Il concetto di Leadership"
-    },
-    {
-      "id": 51,
-      "domanda": "Nel modello organizzativo telocratico la leadership è:",
-      "opzioni": [
-        "innovativa e professionale",
-        "autoritaria",
-        "intellettuale",
-        "tecnica"
-      ],
-      "risposta_corretta": 0,
-      "argomento": "La Gestione delle risorse umane - Il concetto di Leadership"
-    },
-    {
-      "id": 52,
-      "domanda": "Quali sono le caratteristiche dello stile \"Prescrittivo\" secondo la Life-Cycle Theory?",
-      "opzioni": [
-        "Supportivo, incentrato sulle relazioni",
-        "In egual misura caratteristiche direttive e relazionali",
-        "Forte direttività e bassa relazione",
-        "Poco direttivo e poco relazionale"
-      ],
-      "risposta_corretta": 2,
-      "argomento": "La Gestione delle risorse umane - Il concetto di Leadership"
-    },
-    {
-      "id": 53,
-      "domanda": "Quali sono le caratteristiche dello stile \"Coinvolgente\" secondo la Life-Cycle Theory?",
-      "opzioni": [
-        "In egual misura caratteristiche direttive e relazionali",
-        "Forte direttività e bassa relazione",
-        "Supportivo, incentrato sulle relazioni",
-        "Poco direttivo e poco relazionale"
-      ],
-      "risposta_corretta": 0,
-      "argomento": "La Gestione delle risorse umane - Il concetto di Leadership"
-    },
-    {
-      "id": 54,
-      "domanda": "Quando è meglio utilizzare lo stile di leadership \"Di Vendita\" secondo la Life-Cycle Theory?",
-      "opzioni": [
-        "Con collaboratori con scarsa competenza ed insicuri nei confronti del compito da svolgere",
-        "Con collaboratori non professionalizzati ma fiduciosi in loro stessi",
-        "Con collaboratori che hanno capacità sviluppate ma sono insicuri o poco motivati",
-        "Nel caso in cui i collaboratori siano indipendenti ed autonomi"
-      ],
-      "risposta_corretta": 1,
-      "argomento": "La Gestione delle risorse umane - Il concetto di Leadership"
-    },
-    {
-      "id": 55,
-      "domanda": "Quando è meglio utilizzare lo stile di leadership \"Delegante\" secondo la Life-Cycle Theory?",
-      "opzioni": [
-        "Con collaboratori con scarsa competenza ed insicuri nei confronti del compito da svolgere",
-        "Con collaboratori non professionalizzati ma fiduciosi in loro stessi",
-        "Con collaboratori che hanno capacità sviluppate ma sono
+    }
+  ]
+}
