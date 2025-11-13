@@ -23,5 +23,16 @@
     "correctAnswer": 3,
     "topic": "Comunicazione - Ufficio Relazioni con il Pubblico"
   },
-  // ... inserire qui tutte le altre 1051 domande ...
+  {
+    "id": 3,
+    "question": "L'insegnante di sostegno può valutare tutti gli alunni della classe?",
+    "options": [
+      "No, può valutare solo l'alunno con disabilità",
+      "Sì, ma solo se il Consiglio di Classe è d'accordo",
+      "Sì, ma solo nel Primo Ciclo",
+      "Sì, in tutti gli ordini di scuola"
+    ],
+    "correctAnswer": 3,
+    "topic": "Disabilità - Insegnante di sostegno"
+  }
 ]
