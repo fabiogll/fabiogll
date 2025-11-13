@@ -3,13 +3,13 @@
     "id": 1,
     "question": "Quali dei seguenti ambiti non appartiene al nuovo modello funzionale di URP elaborato con la legge n.150/00?",
     "options": [
-      "Ambito delle prestazioni (l'esercizio dei diritti di informazione, accesso e partecipazione)",
-      "Ambito organizzativo (coordinare le reti civiche, garantire informazione tra uffici)",
-      "Ambito dell'ascolto (verifica della qualità dei servizi resi e di gradimento dell'utenza)",
-      "Ambito del controllo (monitorare l'attività dirigenziale per valutarne la gestione)"
+      "Ambito delle prestazioni",
+      "Ambito organizzativo",
+      "Ambito dell'ascolto",
+      "Ambito del controllo"
     ],
     "correctAnswer": 3,
-    "topic": "Comunicazione - Ufficio Relazioni con il Pubblico"
+    "topic": "Comunicazione - URP"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
       "La legge n.241/90"
     ],
     "correctAnswer": 3,
-    "topic": "Comunicazione - Ufficio Relazioni con il Pubblico"
+    "topic": "Comunicazione - URP"
   },
   {
     "id": 3,
