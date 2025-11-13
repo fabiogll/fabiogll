@@ -36,12 +36,30 @@ function initializeDOMElements() {
     console.log("✅ Elementi DOM inizializzati");
 }
 
+// Setup event listeners - DA CHIAMARE SOLO DOPO initQuiz
+function setupEventListeners() {
+    console.log("🔗 Setup event listeners...");
+    
+    // Verifica che gli elementi esistano
+    if (!nextBtn || !prevBtn || !finishBtn || !restartBtn) {
+        console.error("❌ Elementi DOM non trovati per gli event listeners");
+        return;
+    }
+    
+    nextBtn.addEventListener('click', nextQuestion);
+    prevBtn.addEventListener('click', prevQuestion);
+    finishBtn.addEventListener('click', finishQuiz);
+    restartBtn.addEventListener('click', initQuiz);
+    
+    console.log("✅ Event listeners configurati");
+}
+
 // Carica il database delle domande
 async function loadQuizDatabase() {
     try {
         console.log("📦 Caricamento database quiz...");
         
-        // Inizializza gli elementi DOM
+        // Inizializza gli elementi DOM PRIMA di tutto
         initializeDOMElements();
         
         console.log("🔗 Tentativo di caricare data.json...");
@@ -93,6 +111,9 @@ function initQuiz() {
     // Aggiorna il contatore
     currentQuestionElement.textContent = currentQuestionIndex + 1;
     totalQuestionsElement.textContent = currentQuiz.length;
+    
+    // Setup event listeners SOLO ORA che il quiz è inizializzato
+    setupEventListeners();
     
     // Avvia il timer
     startTimer();
@@ -225,20 +246,9 @@ function finishQuiz() {
     resultsContainer.style.display = 'block';
 }
 
-// Setup event listeners
-function setupEventListeners() {
-    console.log("🔗 Setup event listeners...");
-    nextBtn.addEventListener('click', nextQuestion);
-    prevBtn.addEventListener('click', prevQuestion);
-    finishBtn.addEventListener('click', finishQuiz);
-    restartBtn.addEventListener('click', initQuiz);
-    console.log("✅ Event listeners configurati");
-}
-
 // Inizializza quando la pagina è pronta
 document.addEventListener('DOMContentLoaded', function() {
     console.log("🚀 DOM caricato - inizializzazione app");
-    setupEventListeners();
     loadQuizDatabase();
 });
 
