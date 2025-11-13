@@ -1,8 +1,11 @@
 {
-  "titolo": "Quiz Assistenti Tecnici - Area Comunicazione, Disabilità e Integrazione, Quadro Normativo Contrattuale, Pubblica Amministrazione, Privacy e Sicurezza",
+  "titolo": "Quiz Assistenti Tecnici - Tutte le Aree",
+  "descrizione": "Quiz completo per Assistenti Tecnici con domande di Comunicazione, Disabilità e Integrazione, Quadro Normativo, Pubblica Amministrazione, Privacy e Sicurezza",
+  "numero_domande": 151,
   "domande": [
     {
       "id": 1,
+      "area": "Comunicazione",
       "domanda": "Quali dei seguenti ambiti non appartiene al nuovo modello funzionale di URP elaborato con la legge n.150/00?",
       "opzioni": [
         "Ambito delle prestazioni (l'esercizio dei diritti di informazione, accesso e partecipazione)",
@@ -15,6 +18,7 @@
     },
     {
       "id": 2,
+      "area": "Comunicazione",
       "domanda": "Quale provvedimento normativo costituisce la premessa per l'introduzione degli URP?",
       "opzioni": [
         "La legge n.59/97",
@@ -27,6 +31,7 @@
     },
     {
       "id": 3,
+      "area": "Comunicazione",
       "domanda": "In quale principio costituzionale si rinviene una legittimazione, sia pure indiretta, alla mission degli URP?",
       "opzioni": [
         "Art.97 e principi di imparzialità e buon andamento",
@@ -39,6 +44,7 @@
     },
     {
       "id": 4,
+      "area": "Comunicazione",
       "domanda": "Quali dei seguenti principi non è necessario considerare ai fini della redazione di un testo amministrativo che risponda a criteri di semplicità ed efficacia comunicativa?",
       "opzioni": [
         "Valutazione della qualità del documento in ragione dei bisogni del destinatario",
@@ -51,6 +57,7 @@
     },
     {
       "id": 5,
+      "area": "Comunicazione",
       "domanda": "La comunicazione esterna non è utilizzata per il seguente scopo:",
       "opzioni": [
         "far conoscere l'Amministrazione, i servizi e i progetti dell'ente",
@@ -63,6 +70,7 @@
     },
     {
       "id": 6,
+      "area": "Comunicazione",
       "domanda": "Tra gli strumenti di comunicazione esterna è possibile annoverare, tra gli altri, quelli:",
       "opzioni": [
         "scritti, parlati, visivi, tecnologici ed eventi",
@@ -75,6 +83,7 @@
     },
     {
       "id": 7,
+      "area": "Comunicazione",
       "domanda": "Nella comunicazione interna tra le direttrici che seguono i messaggi non viene annoverato il flusso:",
       "opzioni": [
         "top - down",
@@ -87,6 +96,7 @@
     },
     {
       "id": 8,
+      "area": "Comunicazione",
       "domanda": "Non risponde al criterio di semplificazione del linguaggio amministrativo usare:",
       "opzioni": [
         "parole semplici e familiari, spesso",
@@ -99,6 +109,7 @@
     },
     {
       "id": 9,
+      "area": "Comunicazione",
       "domanda": "E' criterio di semplificazione del linguaggio amministrativo preferire:",
       "opzioni": [
         "le frasi di forma subordinata a quelle di forma coordinata",
@@ -111,6 +122,7 @@
     },
     {
       "id": 10,
+      "area": "Comunicazione",
       "domanda": "L'Ufficio Relazioni con il Pubblico deve contribuire al coordinamento delle funzioni di comunicazione dell'Ente, ai sensi:",
       "opzioni": [
         "della Legge n.150/00",
@@ -123,6 +135,7 @@
     },
     {
       "id": 11,
+      "area": "Comunicazione",
       "domanda": "Nella comunicazione scritta, ed in particolare nel comunicare una notizia, occorre sempre avere presente cinque domande guida. Quale di queste non è una domanda guida:",
       "opzioni": [
         "chi?",
@@ -135,6 +148,7 @@
     },
     {
       "id": 12,
+      "area": "Comunicazione",
       "domanda": "Cosa si intende per comunicare \"bene\" in p.a.:",
       "opzioni": [
         "comunicare in modo da venire capiti",
@@ -147,6 +161,7 @@
     },
     {
       "id": 13,
+      "area": "Comunicazione",
       "domanda": "Cos'è la comunicazione pubblica?",
       "opzioni": [
         "La comunicazione istituzionale, che permette l'esercizio dell'attività sia normativa che di governo",
@@ -159,6 +174,7 @@
     },
     {
       "id": 14,
+      "area": "Comunicazione",
       "domanda": "La Comunicazione pubblica è finalizzata....",
       "opzioni": [
         "a sostenere le capacità di sviluppo e le potenzialità di crescita di un'impresa",
@@ -171,6 +187,7 @@
     },
     {
       "id": 15,
+      "area": "Comunicazione",
       "domanda": "La Comunicazione pubblica è...",
       "opzioni": [
         "un problema pervasivo delle imprese e non dei singoli uffici addetti",
@@ -183,18 +200,20 @@
     },
     {
       "id": 16,
+      "area": "Comunicazione",
       "domanda": "La comunicazione interna è fondamentale nei processi di cambiamento. Quale delle seguenti motivazioni non è coerente con questa affermazione:",
       "opzioni": [
         "esprime l'identità riflessa nei giudizi della gente che reagirà a seconda dei casi con atteggiamenti differenti",
         "rafforza il sentimento di appartenenza, il processo di identificazione con l'ente e la motivazione",
         "attiva e sostiene processi di apprendimento organizzativo, lo sviluppo delle professionalità individuali e collettive",
-        "migliora le capacità relazionali dei membri dell'organizzazione e gli atteggiamenti attraverso i quali si manifesta l'azione dell'ente"
+        "migliora le capacità relazionali dei membri dell'organizzazione e gli atteggiamenti attraverso i quali si manifesta l'action dell'ente"
       ],
       "risposta_corretta": 0,
       "argomento": "Aspetti Gestionali-Relazionali per la gestione delle risorse umane. La comunicazione Pubblica"
     },
     {
       "id": 17,
+      "area": "Comunicazione",
       "domanda": "Qual può essere la definizione di comunicazione:",
       "opzioni": [
         "l'interazione intersoggettiva e volontaria mediante un linguaggio umano basato su un sistema simbolico",
@@ -207,6 +226,7 @@
     },
     {
       "id": 18,
+      "area": "Comunicazione",
       "domanda": "Quale delle seguenti non è una vera forma di comunicazione:",
       "opzioni": [
         "la Comunicazione verbale",
@@ -219,6 +239,7 @@
     },
     {
       "id": 19,
+      "area": "Comunicazione",
       "domanda": "Quale delle seguenti Non è una forma di comunicazione non verbale:",
       "opzioni": [
         "comunicazione tramite i segni del corpo",
@@ -231,6 +252,7 @@
     },
     {
       "id": 20,
+      "area": "Comunicazione",
       "domanda": "Quale delle seguenti NON è una condizione essenziale perche un atto linguistico sia da considerarsi \"appropriate\":",
       "opzioni": [
         "gli atti devono essere veri in relazione alle condizioni effettive",
@@ -243,6 +265,7 @@
     },
     {
       "id": 21,
+      "area": "Comunicazione",
       "domanda": "Cosa significa l'espressione \"non si può non comunicare\":",
       "opzioni": [
         "non occorre comunicare sempre",
@@ -255,6 +278,7 @@
     },
     {
       "id": 22,
+      "area": "Comunicazione",
       "domanda": "Perché \"non si può non comunicare in una relazione\"?",
       "opzioni": [
         "Perché a volte un messaggio non viene recepito correttamente",
@@ -267,6 +291,7 @@
     },
     {
       "id": 23,
+      "area": "Comunicazione",
       "domanda": "Una comunicazione efficace è vicina all'essenza del management efficace?",
       "opzioni": [
         "Certamente, tanto che si può dire che una implica l'altra",
@@ -279,10 +304,11 @@
     },
     {
       "id": 24,
+      "area": "Comunicazione",
       "domanda": "Un'organizzazione è un tipo speciale di gruppo, con delle caratteristiche. Quale di queste NON è una caratteristica che definisce un'organizzazione?",
       "opzioni": [
         "Ha una struttura comunicativa formalizzata più o meno gerarchica",
-        "Ha un obbiettivo esplicitamente definido",
+        "Ha un obbiettivo esplicitamente definito",
         "Ha un sistema di procedure standardizzate che regolano il processo decisionale, la comunicazione esterna, ecc ecc",
         "Ha un'esigenza di tutelare gli utenti fornendo loro il miglior servizio possibile"
       ],
@@ -291,6 +317,7 @@
     },
     {
       "id": 25,
+      "area": "Comunicazione",
       "domanda": "Quali sono i contenuti nella Comunicazione Funzionale:",
       "opzioni": [
         "informazioni che supportano la realizzazione del processo lavorativo",
@@ -303,6 +330,7 @@
     },
     {
       "id": 26,
+      "area": "Comunicazione",
       "domanda": "Quali sono i temi nella Comunicazione Formativa:",
       "opzioni": [
         "l'insieme delle nozioni e conoscenze inerenti a metodi e tecniche della comunicazione",
@@ -315,6 +343,7 @@
     },
     {
       "id": 27,
+      "area": "Comunicazione",
       "domanda": "Quali sono gli obbiettivi della Comunicazione Creativa:",
       "opzioni": [
         "gestire e potenziare le relazioni tra l'organizzazione, dipendenti e sindacati",
@@ -327,6 +356,7 @@
     },
     {
       "id": 28,
+      "area": "Comunicazione",
       "domanda": "Quali sono gli strumenti utilizzati nella Comunicazione Strategica:",
       "opzioni": [
         "lettere, Circolari, albi e bacheche",
@@ -339,6 +369,7 @@
     },
     {
       "id": 29,
+      "area": "Comunicazione",
       "domanda": "Quale di questi NON è un obiettivo trasversale alla comunicazione organizzativa:",
       "opzioni": [
         "obiettivo strategico: propone il (ri)orientamento dell'impresa attraverso la diffusione dei valori guida",
@@ -351,6 +382,7 @@
     },
     {
       "id": 30,
+      "area": "Comunicazione",
       "domanda": "Quale di queste accezioni NON è usata nelle scienze sociali per definire il termine Organizzazione:",
       "opzioni": [
         "attività diretta a stabilire relazioni relativamente durevoli entre un complesso di persone e di cose",
@@ -363,10 +395,11 @@
     },
     {
       "id": 31,
+      "area": "Comunicazione",
       "domanda": "Quale definizione dà Barnard di un'organizzazione complessa?",
       "opzioni": [
         "Le organizzazioni a grandi dimensioni; differiscono dalle minori per il tipo, la varietà e l'intreccio delle relazioni socio-tecniche che le costruiscono",
-        "Le organizzazioni caratterizzate da relazioni strutturali che caratterizzano il modo di agire delle stesse",
+        "Le organizzazioni caratterizzate da relazioni strukturali che caratterizzano il modo di agire delle stesse",
         "Le organizzazioni caratterizzate non solo da relazioni tra individui ma tra unità e sub-unità strutturali di varie dimensioni e in varie posizioni gerarchiche",
         "Le organizzazioni in cui le sub-unità si dividono il lavoro: alcune si occupano degli utenti esterni, altri di programmazione, e così via"
       ],
@@ -375,6 +408,7 @@
     },
     {
       "id": 32,
+      "area": "Comunicazione",
       "domanda": "Quando è nata la teoria dell'organizzazione scientifica del lavoro?",
       "opzioni": [
         "Nel primo ventennio del Novecento",
@@ -387,6 +421,7 @@
     },
     {
       "id": 33,
+      "area": "Comunicazione",
       "domanda": "Quale delle seguenti NON è una caratteristica della teoria dello Scientific Management?",
       "opzioni": [
         "Razionalizzazione, parcellizzazione e misurazione dell'attività lavorativa",
@@ -399,6 +434,7 @@
     },
     {
       "id": 34,
+      "area": "Comunicazione",
       "domanda": "Quale delle seguenti NON è una caratteristica della teoria delle Relazioni Umane di Mayo?",
       "opzioni": [
         "L'azione del lavoratore deve essere vista nel suo complesso",
@@ -411,6 +447,7 @@
     },
     {
       "id": 35,
+      "area": "Comunicazione",
       "domanda": "Quale di queste NON è uno dei principi della scuola Comportamentista e Motivazionale:",
       "opzioni": [
         "la teoria dei bisogni in chiave evolutiva",
@@ -423,6 +460,7 @@
     },
     {
       "id": 36,
+      "area": "Comunicazione",
       "domanda": "I Modelli Socio-Tecnici e le teorie della \"Contingenza\" seguono delle indicazioni teoriche che NON comprendono ...",
       "opzioni": [
         "L'impresa intesa come macchina vivente, che deve sapersi evolvere",
@@ -435,6 +473,7 @@
     },
     {
       "id": 37,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo Meccanico ad uno Organico, qual è il presupposto strutturale dell'ambiente d'azienda:",
       "opzioni": [
         "prevalenza delle attività industriali",
@@ -447,6 +486,7 @@
     },
     {
       "id": 38,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo Meccanico ad uno Organico, quale di queste caratteristiche è riferita alla tecnologia nel modello meccanico:",
       "opzioni": [
         "automazione",
@@ -459,6 +499,7 @@
     },
     {
       "id": 39,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo Meccanico ad uno Organico, quale di queste caratteristiche è riferibile alla cultura manageriale del modello organico:",
       "opzioni": [
         "ingegneristica e ragionieristica",
@@ -471,6 +512,7 @@
     },
     {
       "id": 40,
+      "area": "Comunicazione",
       "domanda": "Da quale termine deriva il nome del modello Teocratico:",
       "opzioni": [
         "dal latino Telere, risolvere",
@@ -483,6 +525,7 @@
     },
     {
       "id": 41,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo burocratico a quello telocratico, quale dei seguenti elementi si riferisce alla struttura nel modello Burocratico:",
       "opzioni": [
         "rigida",
@@ -495,6 +538,7 @@
     },
     {
       "id": 42,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo burocratico a quello telocratico, quale dei seguenti elementi NON si riferisce alla Leadership nel modello Teocratico:",
       "opzioni": [
         "professionale",
@@ -507,6 +551,7 @@
     },
     {
       "id": 43,
+      "area": "Comunicazione",
       "domanda": "Il passaggio dal modello tra modello burocratico e quello teocratico richiede un nuovo stile direzionale. Quale di queste caratteristiche NON è richiesta:",
       "opzioni": [
         "la capacità di funzionare al di là delle logiche di schieramento",
@@ -519,6 +564,7 @@
     },
     {
       "id": 44,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo burocratico a quello telocratico, quale di questi elementi caratterizza il sistema decisionale nel modello organizzativo Teocratico:",
       "opzioni": [
         "compartimenti stagno",
@@ -531,6 +577,7 @@
     },
     {
       "id": 45,
+      "area": "Comunicazione",
       "domanda": "Nel passaggio da un modello organizzativo burocratico a quello telocratico, quale aggettivo individua il sistema di relazioni sindacali nel modello organizzativo Teocratico:",
       "opzioni": [
         "burocratico",
@@ -543,6 +590,7 @@
     },
     {
       "id": 46,
+      "area": "Comunicazione",
       "domanda": "Quali sono i due aggregati fondamentali su cui si basa la valutazione del dirigente pubblico:",
       "opzioni": [
         "le prestazioni e le competenze organizzative",
@@ -555,6 +603,7 @@
     },
     {
       "id": 47,
+      "area": "Comunicazione",
       "domanda": "Quale tipo di leadership è richiesta al dirigente pubblico:",
       "opzioni": [
         "adattiva",
@@ -567,6 +616,7 @@
     },
     {
       "id": 48,
+      "area": "Comunicazione",
       "domanda": "Nel modello organizzativo burocratico la leadership è:",
       "opzioni": [
         "burocratica",
@@ -579,6 +629,7 @@
     },
     {
       "id": 49,
+      "area": "Comunicazione",
       "domanda": "Nel modello organizzativo burocratico la leadership è:",
       "opzioni": [
         "autoritaria",
@@ -591,6 +642,7 @@
     },
     {
       "id": 50,
+      "area": "Comunicazione",
       "domanda": "Nel modello organizzativo telocratico la leadership è:",
       "opzioni": [
         "partecipativa",
